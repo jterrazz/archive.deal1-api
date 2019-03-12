@@ -1,0 +1,9 @@
+{
+  "name": "deal41-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitlab.com:jterrazz/deal41-api.git",
+  "author": "Jean-Baptiste Terrazzoni <jterrazz@protonmail.com>",
+  "license": "MIT",
+  "private": true
+}
