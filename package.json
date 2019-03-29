@@ -5,5 +5,29 @@
   "repository": "git@gitlab.com:jterrazz/deal41-api.git",
   "author": "Jean-Baptiste Terrazzoni <jterrazz@protonmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "start": "node -r ts-node/register/transpile-only -r tsconfig-paths/register build/server.js",
+    "start.nodemon": "ts-node -r tsconfig-paths/register src/server.ts | pino-pretty",
+    "dev": "nodemon",
+    "build": "tsc",
+    "heroku-postbuild": "rm -rf ./build && yarn migration.run && tsc",
+    "migration.generate": "ts-node ./node_modules/.bin/typeorm migration:generate -n",
+    "migration.create": "ts-node ./node_modules/.bin/typeorm migration:create -n",
+    "migration.run": "ts-node ./node_modules/.bin/typeorm migration:run",
+    "migration.revert": "ts-node ./node_modules/.bin/typeorm migration:revert"
+  },
+  "dependencies": {
+    "@types/node": "^11.12.1",
+    "pg": "^7.9.0",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^8.0.3",
+    "tsconfig-paths": "^3.8.0",
+    "typeorm": "^0.2.16",
+    "typescript": "^3.3.4000"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10",
+    "pino-pretty": "^2.5.0"
+  }
 }

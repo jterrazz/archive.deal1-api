@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "alwaysStrict": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "lib": ["es7"],
+    "sourceMap": true,
+    "outDir": ".build",
+    "baseUrl": "./src",
+    "paths": {
+
+    }
+  },
+  "exclude": ["*.spec.ts", "*.test.ts"],
+  "include": ["src/*.ts"]
+}
