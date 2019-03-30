@@ -3,6 +3,7 @@
 
 import { merge } from "lodash";
 import { gql } from "apollo-server-koa";
+
 import { typeDef as User, resolvers as userResolvers } from "./User";
 import { typeDef as Product, resolvers as productResolvers } from "./Product";
 
