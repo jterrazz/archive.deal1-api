@@ -18,8 +18,10 @@
     "lint": "eslint --fix '**/*.{ts,js}'"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.123",
     "@types/node": "^11.12.1",
     "apollo-server-koa": "^2.4.8",
+    "dataloader": "^1.4.0",
     "graphql": "^14.2.0",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",

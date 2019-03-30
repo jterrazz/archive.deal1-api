@@ -12,7 +12,9 @@
     "baseUrl": "./src",
     "paths": {
       "@logs": ["utils/logs"],
-      "@config": ["config"]
+      "@config": ["config"],
+      "@entities": ["entities"],
+      "@managers/*": ["managers/*"]
     }
   },
   "exclude": ["*.spec.ts", "*.test.ts"],

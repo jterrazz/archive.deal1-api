@@ -15,3 +15,7 @@ I18next, I18next Middleware, I18next Backend — localization and translations
 Jest - unit and snapshot testing -->
 
 <!-- https://github.com/kriasoft/nodejs-api-starter -->
+
+
+Add createdat in entities automatically
+Import @...

@@ -26,11 +26,7 @@ createConnection()
 
     app.listen(config.port, () => {
       logs.info(`Server alive - PORT: ${config.port} 🥰`);
-      logs.info(
-        `GraphQL available at http://localhost:${config.port}${
-          1 // server.graphqlPath
-        }`
-      );
+      logs.info(`GraphQL available at http://localhost:${config.port}/graphql`);
     });
   })
   .catch(err => {

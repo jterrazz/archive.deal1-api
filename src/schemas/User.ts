@@ -1,17 +1,29 @@
 import { gql } from "apollo-server-koa";
+import { getProductsOfUsers, getUsers, getUser } from "@managers/user";
+import * as DataLoader from "dataloader";
 
-export const typeDef = gql(`
+export const typeDef = gql`
   extend type Query {
-    user: User
+    user(id: Int!): User
+    users(ids: [Int!]!): [User]
   }
 
   type User {
-    name: String
+    id: ID
+    firstName: String
+    lastName: String
+    products: [Product]
   }
-`);
+`;
+
+const productsLoader = new DataLoader<number, object[]>(getProductsOfUsers);
 
 export const resolvers = {
   Query: {
-    user: () => ({ name: "JB" })
+    user: (_, { id }) => getUser(id),
+    users: (_, { ids }) => getUsers(ids)
+  },
+  User: {
+    products: user => productsLoader.load(user.id)
   }
 };

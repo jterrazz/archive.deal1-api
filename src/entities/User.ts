@@ -5,8 +5,11 @@ import {
   BaseEntity,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
   PrimaryGeneratedColumn
 } from "typeorm";
+
+import { Product } from "./Product";
 
 @Entity()
 export class User extends BaseEntity {
@@ -31,4 +34,7 @@ export class User extends BaseEntity {
 
   @UpdateDateColumn({ type: "timestamp" })
   updatedAt: Date;
+
+  @OneToMany(() => Product, product => product.user)
+  products: Product;
 }

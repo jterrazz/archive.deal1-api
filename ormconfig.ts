@@ -10,7 +10,8 @@ let ormConfig: any = {
   },
   extra: {
     ssl: process.env.NODE_ENV === "production"
-  }
+  },
+  logging: true // TODO Dynamic with ENV
 };
 
 if (process.env.DATABASE_URL) {
