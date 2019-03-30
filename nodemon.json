@@ -1,5 +1,5 @@
 {
   "watch": ["src", "package.json", "ts_config.json"],
-  "exec": "yarn start.nodemon",
+  "exec": "ts-node -r tsconfig-paths/register src/server.ts | pino-pretty",
   "ext": "ts"
 }
