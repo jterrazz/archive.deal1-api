@@ -14,7 +14,8 @@
       "@logs": ["utils/logs"],
       "@config": ["config"],
       "@entities": ["entities"],
-      "@managers/*": ["managers/*"]
+      "@managers/*": ["managers/*"],
+      "@middlewares/*": ["middlewares/*"]
     }
   },
   "exclude": ["*.spec.ts", "*.test.ts"],

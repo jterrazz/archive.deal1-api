@@ -25,6 +25,7 @@
     "dataloader": "^1.4.0",
     "dotenv": "^7.0.0",
     "graphql": "^14.2.0",
+    "graphql-middleware": "^3.0.2",
     "joi": "^14.3.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",

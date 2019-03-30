@@ -8,7 +8,7 @@ const environmentSchema = Joi.object()
     NODE_ENV: Joi.string()
       .allow(["local", "development", "staging", "production"])
       .required(),
-    PORT: Joi.number().default(8080)
+    PORT: Joi.number().default(3000)
   })
   .unknown()
   .required();

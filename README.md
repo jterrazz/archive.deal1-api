@@ -19,3 +19,5 @@ Jest - unit and snapshot testing -->
 
 Add createdat in entities automatically
 Import @...
+Validation of mutations
+Make Readmes
