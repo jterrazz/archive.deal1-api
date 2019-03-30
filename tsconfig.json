@@ -11,7 +11,8 @@
     "outDir": ".build",
     "baseUrl": "./src",
     "paths": {
-
+      "@logs": ["utils/logs"],
+      "@config": ["config"]
     }
   },
   "exclude": ["*.spec.ts", "*.test.ts"],

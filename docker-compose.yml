@@ -10,4 +10,15 @@ services:
       - .:/home/deal41
     environment:
       NODE_ENV: ${NODE_ENV}
-    # depends_on:
+      DATABASE_HOST: postgres
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres:10-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: deal41 # Created at first launch
+      POSTGRES_PASSWORD: a_really_secure_password
