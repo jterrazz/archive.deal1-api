@@ -3,6 +3,11 @@ import * as _ from "lodash";
 
 import { Product, User } from "@entities";
 
+export const getUser = async (id: number): Promise<any> =>
+  await getRepository(User).findOne({
+    where: { id }
+  });
+
 export const getUsers = async (userIds: number[]): Promise<any> =>
   await getRepository(User).find({
     where: userIds.map(id => ({ id }))
