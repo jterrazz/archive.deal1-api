@@ -1,6 +1,8 @@
 import { gql } from "apollo-server-koa";
-import { getProductsOfUsers, getUsers, getUser } from "@managers/user";
 import * as DataLoader from "dataloader";
+
+import { getUsersProducts, getUsers } from "@managers/user";
+import { User, Product } from "@entities";
 
 export const typeDef = gql`
   extend type Query {
@@ -16,14 +18,15 @@ export const typeDef = gql`
   }
 `;
 
-const productsLoader = new DataLoader<number, object[]>(getProductsOfUsers);
+const userLoader = new DataLoader<number, Product[]>(getUsers);
+const userProductsLoader = new DataLoader<number, User[]>(getUsersProducts);
 
 export const resolvers = {
   Query: {
-    user: (_, { id }) => getUser(id),
-    users: (_, { ids }) => getUsers(ids)
+    user: (_, { id }) => userLoader.load(id),
+    users: (_, { ids }) => ids.map((id: number) => userLoader.load(id))
   },
   User: {
-    products: user => productsLoader.load(user.id)
+    products: (user: User) => userProductsLoader.load(user.id)
   }
 };
