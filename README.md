@@ -3,7 +3,7 @@ Nodemon for hot reloading
 Typescript with relative paths
 
 Koa for HTTP endpoints (probably for third party auth, dont know yet)
-GraphQL for the majority of requests, with prisma playing the rol9e of an ORM, and `apollo-server` for public access
+GraphQL for the majority of requests, `apollo-server`, explains the schemas and resolver structure + middlewares (auth, validation)
 
 
 <!-- Docker, Node.js, Yarn, JavaScript, Babel, Flow, Prettier — core platform and dev tools
@@ -16,8 +16,13 @@ Jest - unit and snapshot testing -->
 
 <!-- https://github.com/kriasoft/nodejs-api-starter -->
 
+Organisation en schema (typesDefs et schems) / managers for logic to get data
+middleware for validation of arguments
 
 Add createdat in entities automatically
 Import @...
 Validation of mutations
 Make Readmes
+
+Explain authentication
+JWT with user roles ?

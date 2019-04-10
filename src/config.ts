@@ -24,7 +24,10 @@ const globalConfig = {
   env: env.NODE_ENV,
   isDev: env.NODE_ENV !== "production",
   isLocal: env.NODE_ENV === "local",
-  port: env.PORT
+  port: env.PORT,
+  services: {
+    facebookAppSecret: env.FACEBOOK_APP_SECRET
+  }
 };
 
 export default globalConfig;
