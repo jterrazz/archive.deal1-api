@@ -6,7 +6,7 @@ export enum AuthRoles {
 
 async function checkAuthConditions(condition, user): Promise<void> {
   if (condition === AuthRoles.User && !user) {
-    throw "Not authntified"; // TODO Do better errors
+    throw "Not authentified"; // TODO Do better errors
   }
 }
 

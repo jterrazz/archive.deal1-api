@@ -5,6 +5,7 @@ import { merge } from "lodash";
 import { gql } from "apollo-server-koa";
 
 import { typeDef as User, resolvers as userResolvers } from "./User";
+import { typeDef as Store, resolvers as storeResolvers } from "./Store";
 import { typeDef as Product, resolvers as productResolvers } from "./Product";
 
 const Query = gql`
@@ -16,5 +17,5 @@ const Query = gql`
   }
 `;
 
-export const typeDefs = [Query, User, Product];
-export const resolvers = merge(userResolvers, productResolvers);
+export const typeDefs = [Query, User, Product, Store];
+export const resolvers = merge(userResolvers, productResolvers, storeResolvers);

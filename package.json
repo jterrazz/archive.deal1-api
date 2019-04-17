@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node -r ts-node/register/transpile-only -r tsconfig-paths/register build/server.js",
     "dev": "nodemon",
+    "dev.local": "docker-compose up -d postgres && yarn dev",
     "build": "tsc",
     "heroku-postbuild": "rm -rf ./build && yarn migration.run && tsc",
     "migration.generate": "ts-node ./node_modules/.bin/typeorm migration:generate -n",

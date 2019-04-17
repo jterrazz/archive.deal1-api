@@ -1,6 +1,9 @@
 import { getRepository } from "typeorm";
 
-import { Product, User } from "@entities";
+import { User } from "@entities";
+
+// OPTIMIZATION IDEAS
+// Most of these methods could be combined to use only one Dataloader
 
 export const getUsers = async (userIds: number[]): Promise<any> => {
   const users = await getRepository(User).find({
@@ -10,10 +13,20 @@ export const getUsers = async (userIds: number[]): Promise<any> => {
   return userIds.map(userId => users.find(user => user.id === userId));
 };
 
-export const getUsersProducts = async (userIds: number[]): Promise<any> => {
-  const products = await getRepository(Product).find({
-    where: userIds.map(userId => ({ userId }))
+export const getStoresFromUsers = async (userIds: number[]): Promise<any> => {
+  const users = await getRepository(User).find({
+    where: userIds.map(id => ({ id })),
+    relations: ["stores"]
   });
 
-  return userIds.map(userId => products.filter(p => p.userId === userId));
+  return userIds.map(userId => users.find(user => user.id === userId).stores);
+};
+
+export const getDefaultStoreFromUsers = async (userIds: number[]): Promise<any> => {
+  // const users = await getRepository(User).find({
+  //   where: userIds.map(id => ({ id })),
+  //   relations: ["stores"]
+  // });
+  //
+  // return userIds.map(userId => users.find(user => user.id === userId).stores);
 };

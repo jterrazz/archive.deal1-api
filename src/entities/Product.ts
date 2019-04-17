@@ -4,15 +4,25 @@ import {
   BaseEntity,
   PrimaryGeneratedColumn,
   ManyToOne,
-  JoinColumn
+  JoinColumn,
+  ManyToMany,
+  CreateDateColumn,
+  UpdateDateColumn
 } from "typeorm";
 
-import { User } from "./User";
+import { Tag } from "./Tag";
+import { Store } from "./Store";
 
 @Entity()
 export class Product extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @CreateDateColumn({ type: "timestamp" })
+  createdAt: Date;
+
+  @UpdateDateColumn({ type: "timestamp" })
+  updatedAt: Date;
 
   @Column({ length: 256 })
   title: string;
@@ -20,10 +30,13 @@ export class Product extends BaseEntity {
   @Column({ length: 256, nullable: true })
   description: string;
 
-  @ManyToOne(() => User, user => user.products)
+  @ManyToMany(() => Tag)
+  tags: Tag[];
+
+  @ManyToOne(() => Store, store => store.products) // TODO Connect to store
   @JoinColumn()
-  user: User;
+  store: Store;
 
   @Column("int", { nullable: true })
-  userId: number;
+  storeId: number;
 }

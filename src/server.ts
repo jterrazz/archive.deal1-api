@@ -13,6 +13,7 @@ import authMiddleware from "@middlewares/graphql-auth";
 import { router } from "./routes";
 import { typeDefs, resolvers } from "./schemas";
 import * as session from "koa-session";
+
 import "reflect-metadata"; // TypeORM Requirement
 
 const app = new Koa();
@@ -20,10 +21,15 @@ const app = new Koa();
 // Will sign the cookies
 app.keys = ["newest secret key", "older secret key"];
 
-const sessionOptions = {
+const sessionOptions: Partial<session.opts> = {
   // store: redisStore({}),
   maxAge: 1000 * 60 * 60 * 24 * 14
 };
+// {
+//   secret: 'asdasdsada',
+//   resave: false,
+//   saveUninitialized: true
+// }
 
 app.use(session(sessionOptions, app));
 // App middlewares
@@ -49,7 +55,7 @@ createConnection()
     logs.info(`Database connected`);
 
     app.listen(config.port, () => {
-      logs.info(`Server alive - PORT: ${config.port} 🥰`);
+      logs.info(`API available at http://localhost:${config.port} 🥰`);
       logs.info(`GraphQL available at http://localhost:${config.port}/graphql`);
     });
   })

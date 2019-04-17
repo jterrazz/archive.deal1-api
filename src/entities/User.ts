@@ -5,11 +5,12 @@ import {
   BaseEntity,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
+  ManyToMany,
+  JoinTable,
   PrimaryGeneratedColumn
 } from "typeorm";
 
-import { Product } from "./Product";
+import { Store } from "./Store";
 
 @Entity()
 export class User extends BaseEntity {
@@ -35,6 +36,7 @@ export class User extends BaseEntity {
   @UpdateDateColumn({ type: "timestamp" })
   updatedAt: Date;
 
-  @OneToMany(() => Product, product => product.user)
-  products: Product;
+  @ManyToMany(() => Store, store => store.users)
+  @JoinTable({ name: "user_stores" })
+  stores: Store[];
 }
