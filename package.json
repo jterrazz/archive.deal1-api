@@ -19,6 +19,7 @@
     "lint": "eslint --fix '**/*.{ts,js}'"
   },
   "dependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/joi": "^14.3.2",
     "@types/koa-passport": "^4.0.2",
     "@types/koa-session": "^5.10.0",
@@ -26,6 +27,7 @@
     "@types/node": "^11.12.1",
     "@types/passport-facebook": "^2.1.8",
     "apollo-server-koa": "^2.4.8",
+    "bcrypt": "^3.0.6",
     "dataloader": "^1.4.0",
     "dotenv": "^7.0.0",
     "graphql": "^14.2.0",

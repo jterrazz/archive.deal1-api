@@ -15,7 +15,7 @@ export default new FacebookStrategy(
       console.log("Facebook authentication returned");
       console.log(_token);
       console.log(profile);
-      done(null, { id: "blut" });
+      done(null, { facebookId: profile.id });
     } catch (err) {
       done(err);
     }

@@ -1,21 +1,31 @@
 import * as passport from "koa-passport";
 import * as compose from "koa-compose";
+import { getRepository } from "typeorm";
 
 import jwtStrategy from "./strategies/jwt";
 import facebookStrategy from "./strategies/facebook";
+
+import { User } from "@entities";
 
 // TODO Explain in MD how it's saved in cookies + serialized / desirelized
 
 passport.use("jwt", jwtStrategy);
 passport.use(facebookStrategy);
 
-passport.serializeUser((user: any, done) => {
-  done(null, user.id);
+passport.serializeUser((loginIds: any, done) => {
+  done(null, loginIds);
 });
-
-passport.deserializeUser(async (id, done) => {
+passport.deserializeUser(async (loginIds: any, done) => {
   try {
-    const user = { id };
+    let user = null;
+    // TODO Maybe pass a copy of the data and not the User object TO AVOID LEAKS !!!
+    if (loginIds.facebookId) {
+      user = await getRepository(User).findOne({ where: { facebookId: loginIds.facebookId } });
+    } else {
+      return done("Authentication object has no valid property");
+    }
+    if (!user) return done("User doesnt exist");
+    delete user.password;
     done(null, user);
   } catch (error) {
     done(error);

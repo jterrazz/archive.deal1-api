@@ -17,6 +17,12 @@ export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ nullable: true })
+  facebookId: string;
+
+  @Column({ nullable: true })
+  googleId: string;
+
   @Column({ length: 256 })
   firstName: string;
 

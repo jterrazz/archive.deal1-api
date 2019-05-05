@@ -27,6 +27,9 @@ const globalConfig = {
   port: env.PORT,
   services: {
     facebookAppSecret: env.FACEBOOK_APP_SECRET
+  },
+  security: {
+    saltRounds: 10
   }
 };
 

@@ -63,3 +63,5 @@ createConnection()
     logs.error(err);
     process.exit();
   });
+
+// TODO Return real errors

@@ -26,3 +26,6 @@ Make Readmes
 
 Explain authentication
 JWT with user roles ?
+
+How to use the playground  with login ?
+Set the 'request.credentials' to 'same-origin'
